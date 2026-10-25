@@ -114,6 +114,15 @@ export function classify(
       exit: ExitCode.Upstream,
       code: 'not_found',
       message: `Not found, or not visible to you (HTTP ${status} ${p.code ?? ''})${where}`,
+      // Observed live: executeQueries answers 404, not 401, on a dataset the caller can list
+      // with Read but holds no Build on.
+      ...(kind === 'executeQueries'
+        ? {
+            hint:
+              'If `datasets` lists this id, you have Read but no Build permission on it: ask the ' +
+              'workspace owner for Build. Otherwise check the dataset id.',
+          }
+        : {}),
     };
   }
   if (status === 401 || status === 403) {

@@ -145,7 +145,7 @@ status alone is ambiguous, so the CLI reads the code:
 | 401/403      | `PowerBINotAuthorizedException`    | `execute_queries_not_authorized` | 5    | No Build permission on the dataset, **or** the tenant switch is off     |
 | 401/403      | body names the tenant setting      | `execute_queries_disabled`       | 5    | The "Dataset Execute Queries REST API" tenant setting is off            |
 | 400          | `DatasetExecuteQueriesError`       | `dax_error`                      | 2    | DAX syntax or semantic error. The API is on and you may query the model |
-| 404          | `PowerBIEntityNotFound`            | `not_found`                      | 5    | Dataset does not exist or is not visible to you at all                  |
+| 404          | `PowerBIEntityNotFound`            | `not_found`                      | 5    | No Build permission on a dataset you can list (seen live), or a wrong id |
 | 429          | any                                | `throttled`                      | 5    | Rate limited                                                            |
 | 3xx          | redirect to sign-in or `*.mcas.ms` | `auth_required`                  | 4    | Session no longer accepted (redirects are never followed)               |
 
