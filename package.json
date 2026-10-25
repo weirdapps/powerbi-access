@@ -1,0 +1,46 @@
+{
+  "name": "powerbi-cli",
+  "version": "0.1.0",
+  "description": "TypeScript CLI for the Power BI REST API via a browser-captured bearer. Mirrors outlook-cli, teams-cli and sharepoint-cli.",
+  "license": "MIT",
+  "private": true,
+  "type": "commonjs",
+  "main": "dist/cli.js",
+  "bin": {
+    "powerbi-cli": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc && chmod +x dist/cli.js",
+    "prepare": "[ -d src ] && npm run build || true",
+    "cli": "ts-node src/cli.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "commander": "^15.0.0",
+    "undici": "^8.12.2"
+  },
+  "optionalDependencies": {
+    "playwright": "^1.64.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.6.5",
+    "@typescript-eslint/eslint-plugin": "^8.71.1",
+    "@typescript-eslint/parser": "^8.71.1",
+    "@vitest/coverage-v8": "^5.0.5",
+    "eslint": "^10.13.0",
+    "eslint-config-prettier": "^10.0.1",
+    "prettier": "^3.9.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.1",
+    "vitest": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  }
+}
